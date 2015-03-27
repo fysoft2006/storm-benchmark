@@ -41,6 +41,7 @@ import storm.kafka.KafkaSpout;
 import storm.kafka.StringScheme;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -103,10 +104,10 @@ public class DataCleanse extends StormBenchmark {
       FileReader reader = new FileReader(DEFAULT_TICKER_SYMBOLS);
       reader.open();
       String line;
-      while((line = reader.nextLine()) != null) {
+      while ((line = reader.nextLine()) != null) {
         String[] words = line.split("\t");
         if (words.length != 2) {
-          LOG.warn("invalid ticker symbols: " + words);
+          LOG.warn("invalid ticker symbols: " + Arrays.toString(words));
           continue;
         }
         LOG.debug("ticker: " + words[0] + ", company: " + words[1]);

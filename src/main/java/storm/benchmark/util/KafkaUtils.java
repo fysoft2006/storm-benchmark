@@ -34,10 +34,14 @@ public final class KafkaUtils {
   public static final String KAFKA_ROOT_PATH = "kafka.root.path";
   public static final String TOPIC = "topic";
   public static final String CLIENT_ID = "client_id";
+  public static final String SPOUT_FETCH_THRESHOLD = "spout.fetch.threshold";
+  public static final String SPOUT_FETCH_SLEEP_INTERVAL_MS = "spout.fetch.sleep.interval.ms";
 
   public static final String DEFAULT_BROKER_LIST = "localhost:9092";
   public static final String DEFAULT_ZOOKEEPER_SERVERS = "localhost:2181";
   public static final String DEFAULT_TOPIC = "storm";
+  public static final long DEFAULT_SPOUT_FETCH_THRESHOLD = 5000L;
+  public static final long DEFAULT_SPOUT_FETCH_SLEEP_INTERVAL_MS = 1000L;
 
   private KafkaUtils() {
   }
@@ -72,6 +76,9 @@ public final class KafkaUtils {
     }
     config.scheme = scheme;
     config.forceFromStart = true;
+/*    config.fetchThreshold = (long) Utils.get(options, SPOUT_FETCH_THRESHOLD, DEFAULT_SPOUT_FETCH_THRESHOLD);
+    config.fetchSleepIntervalMS = (long) Utils.get(options, SPOUT_FETCH_SLEEP_INTERVAL_MS,
+            DEFAULT_SPOUT_FETCH_SLEEP_INTERVAL_MS);*/
     return config;
   }
 
